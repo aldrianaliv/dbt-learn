@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    database: SalesDB   # optional; default to the db on profiles.yml
+    schema: dbo 
+    tables:
+      - name: customer
+      - name: order

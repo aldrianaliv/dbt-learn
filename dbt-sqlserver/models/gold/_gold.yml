@@ -1,0 +1,17 @@
+version: 2
+
+models:
+    - name: dim_customers
+      description: "One row per customer"
+      columns:
+        - name: customer_id
+          data_tests: [unique, not_null]
+          
+    - name: fct_orders
+      description: "One row per non-cancelled order"
+      columns:
+        - name: order_id
+          data_tests: [unique, not_null]
+
+    - name: agg_customer_sales
+      description: "Sales summary per customer"

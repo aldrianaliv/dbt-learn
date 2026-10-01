@@ -1,0 +1,10 @@
+version: 2
+
+# example if want to straight to silver and bronze as the source system 
+sources:
+    - name: bronze             # label you use in source('bronze')
+      schema: dbo              # schema table in
+      tables:
+        - name: customers # alias
+          identifier: IBC_CUSTOMER # real table name 
+        - name: orders

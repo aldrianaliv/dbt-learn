@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: silver_customers
+    columns:
+      - name: customer_id
+        data_tests: [unique, not_null]
+      - name: email
+        data_tests: [not null]
+  - name: silver_order
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: order
+        data_tests: [not_null]

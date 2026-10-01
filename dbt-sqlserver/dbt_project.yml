@@ -1,0 +1,54 @@
+# main setting files for your projects
+# project's name
+# which profile (database conn to use)
+# where you files at
+# how each model built (as view, table and which schema)
+
+# Project Identity
+name: 'my_project'
+version: '1.0.0'
+config-version: 2
+
+# Connection
+profile: 'my_project' # must match top-level key @profiles.yml
+
+# Folder Location
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+analysis-paths: ["analyses"]
+
+
+target-path: "target"             # compiled SQL goes here
+clean-target:                     # folders deleted by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+
+# Models setting by folder
+models:
+  my_project:
+    +materialized: view           # default for every model
+    
+    bronze:  # models/bronze/
+      +materialized: view
+      +schema: bronze
+
+    silver:   # models/silver/
+      +materialized: ephemeral        # not build in DB but inlined as a CTE
+      +schema: silver
+ 
+    gold:    # models/gold/
+      +materialized: table
+      +schema: gold
+
+# Seeds (CSV files in seeds/)
+seeds:
+  my_project:
+    +schema: seeds
+
+# Tests
+data_tests:
+  +severity: error   # use "warn" to report failures without failiing the run

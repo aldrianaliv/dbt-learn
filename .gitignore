@@ -1,0 +1,7 @@
+.env
+.venv
+target/
+dbt_packages/
+logs/
+.ipynb_checkpoints/
+__pycache__/

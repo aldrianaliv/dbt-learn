@@ -1,0 +1,30 @@
+  my_project:                  # <- this name must match on the dbt_project.yml on `profile:`
+    target: dev
+    outputs:
+      dev:
+        type: sqlserver
+        driver: "ODBC Driver 18 for SQL Server"
+        server: "{{ env_var('SQLSERVER_HOST') }}"
+        port: "{{ env_var('SQLSERVER_PORT') | as_number }}"
+        database: "{{ env_var('SQLSERVER_DATABASE') }}"
+        schema: "{{ env_var('SQLSERVER_SCHEMA') }}"
+        authentication: sql
+        user: "{{ env_var('SQLSERVER_USER') }}"
+        password: "{{ env_var('SQLSERVER_PASSWORD') }}"
+        encrypt: true
+        trust_cert: true
+        threads: 4
+      
+      prod:
+        type: sqlserver
+        driver: "ODBC Driver 18 for SQL Server"
+        server: "{{ env_var('SQLSERVER_PROD_HOST') }}"
+        port: "{{ env_var('SQLSERVER_PROD_PORT') | as_number }}"
+        database: "{{ env_var('SQLSERVER_PROD_DATABASE') }}"
+        schema: "{{ env_var('SQLSERVER_PROD_SCHEMA') }}"
+        authentication: sql
+        user: "{{ env_var('SQLSERVER_PROD_USER') }}"
+        password: "{{ env_var('SQLSERVER_PROD_PASSWORD') }}"
+        encrypt: true
+        trust_cert: true
+        threads: 4
